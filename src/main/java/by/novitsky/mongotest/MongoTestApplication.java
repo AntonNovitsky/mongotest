@@ -27,7 +27,7 @@ import java.io.*;
 import java.util.Scanner;
 
 @SpringBootApplication
-public class MongoTestApplication implements CommandLineRunner {
+public class MongoTestApplication /*implements CommandLineRunner*/ {
 
     @Autowired
     private UserRepository repository;
@@ -42,7 +42,7 @@ public class MongoTestApplication implements CommandLineRunner {
         SpringApplication.run(MongoTestApplication.class, args);
     }
 
-    @Override
+    /*@Override
     public void run(String... args) throws Exception{
         repository.deleteAll();
         repository.save(new User("John","Smith"));
@@ -70,5 +70,5 @@ public class MongoTestApplication implements CommandLineRunner {
         gridFsFile =  gridFsTemplate.findOne(new Query(Criteria.where("filename").is("test.png")));
         System.out.println(gridFsFile);
 
-    }
+    }*/
 }
