@@ -14,9 +14,9 @@ import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 @Configuration
 public class GridFSConfig {
 
-    MongoDbFactory mongoDBFactory;
-    MappingMongoConverter mappingMongoConverter;
-    MongoClient mongoClient;
+    private final MongoDbFactory mongoDBFactory;
+    private final MappingMongoConverter mappingMongoConverter;
+    private final MongoClient mongoClient;
 
     @Autowired
     public GridFSConfig(MongoDbFactory mongoDBFactory, MappingMongoConverter mappingMongoConverter, MongoClient mongoClient) {

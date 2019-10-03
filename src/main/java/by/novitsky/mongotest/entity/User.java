@@ -1,6 +1,9 @@
 package by.novitsky.mongotest.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
+
+import javax.annotation.Generated;
 
 public class User {
 
@@ -8,6 +11,7 @@ public class User {
     private String id;
     private String firstName;
     private String lastName;
+
 
     public User() {
     }

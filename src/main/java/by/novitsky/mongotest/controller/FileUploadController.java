@@ -1,9 +1,7 @@
 package by.novitsky.mongotest.controller;
 
 import by.novitsky.mongotest.service.FileService;
-import com.mongodb.client.gridfs.GridFSBucket;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,21 +10,11 @@ import java.io.*;
 
 @RestController
 public class FileUploadController {
-
-    private GridFsTemplate gridFsTemplate;
-    private GridFSBucket gridFSBucket;
-    private FileService fileService;
+    private final FileService fileService;
 
     @Autowired
-    public FileUploadController(GridFsTemplate gridFsTemplate, GridFSBucket gridFSBucket, FileService fileService) {
-        this.gridFsTemplate = gridFsTemplate;
-        this.gridFSBucket = gridFSBucket;
+    public FileUploadController(FileService fileService) {
         this.fileService = fileService;
-    }
-
-    @GetMapping("/hello")
-    public String getHello(){
-        return "Hello";
     }
 
     @PostMapping("/upload")

@@ -3,17 +3,14 @@ package by.novitsky.mongotest.controller;
 import by.novitsky.mongotest.entity.User;
 import by.novitsky.mongotest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
@@ -33,6 +30,11 @@ public class UserController {
     @GetMapping("/lastName/{name}")
     public List<User> getUserByLastName(@PathVariable String name){
         return userService.getUserByLastName(name);
+    }
+
+    @PostMapping
+    public User createUser(@RequestBody User user){
+        return userService.persistUser(user);
     }
 
 }

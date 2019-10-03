@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UserService(UserRepository userRepository) {
@@ -27,6 +27,11 @@ public class UserService {
 
     public List<User> getUserByLastName(String name){
         return userRepository.findByLastName(name);
+    }
+
+    public User persistUser(User user){
+        userRepository.save(user);
+        return user;
     }
 
 }

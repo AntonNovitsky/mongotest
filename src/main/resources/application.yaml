@@ -3,3 +3,16 @@ spring:
         multipart:
             max-file-size: 500KB
             max-request-size: 1MB
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+            database: mongotest
+    datasource:
+        url: jdbc:postgresql://localhost/secutirytest
+        username: postgres
+        password: root
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        generate-ddl: true
+

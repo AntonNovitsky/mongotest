@@ -17,8 +17,8 @@ import java.io.InputStream;
 
 @Service
 public class FileService {
-    private GridFsTemplate gridFsTemplate;
-    private GridFSBucket gridFSBucket;
+    private final GridFsTemplate gridFsTemplate;
+    private final GridFSBucket gridFSBucket;
 
     @Autowired
     public FileService(GridFsTemplate gridFsTemplate, GridFSBucket gridFSBucket) {
@@ -31,6 +31,7 @@ public class FileService {
         if (gridFSFindIterable.iterator().hasNext()){
             throw new RuntimeException("File already exists");
         }
+
         try(InputStream inputStream = uploadedFile.getInputStream()){
             gridFsTemplate.store(inputStream, uploadedFile.getOriginalFilename());
         }
